@@ -1,9 +1,13 @@
+import { urlencoded } from "express";
 import { ObjectId } from "mongodb";
 import { Context } from "../context";
 
 export type TrackerResolverParent = {
   id: ObjectId;
 };
+export type TrackerResoverFilename = {
+  filename: String;
+}
 export const trackerResolvers = {
   id: async ({ id }: TrackerResolverParent) => {
     return id;
@@ -13,11 +17,7 @@ export const trackerResolvers = {
     args: unknown,
     { trackerLoader }: Context
   ) => {
-    // TODO TASK 1
-
-    console.log("IMPLEMENT TASK 1");
-
-    return "TASK 1";
+    return encodeURI(`${process.env.API_URL || "localhost" + ":" + process.env.PORT}/graphql/?query={track{id}}?variables={id:${id}}`);
   },
   inquiries: async (
     { id }: TrackerResolverParent,

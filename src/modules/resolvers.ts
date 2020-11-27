@@ -2,7 +2,7 @@ import { trackerResolvers } from "./tracker/resolvers";
 import { GraphQLDateTime, GraphQLTime } from "graphql-iso-date";
 import { inquiryResolvers } from "./inquiry/resolvers";
 import { createTracker } from "./tracker/mutations";
-import { listTrackers } from "./tracker/queries";
+import { listTrackers, track } from "./tracker/queries";
 
 export const resolvers = {
   DateTime: GraphQLDateTime,
@@ -15,5 +15,6 @@ export const resolvers = {
   },
   Query: {
     listTrackers,
+    track
   },
 };

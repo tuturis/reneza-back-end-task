@@ -1,6 +1,6 @@
 version: "3"
 services:
-  satoshi2-back:
+  reneza-back-end-task:
     image: node:10
     volumes:
       - .:/home/node/app

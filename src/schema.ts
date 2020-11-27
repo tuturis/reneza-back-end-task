@@ -3,6 +3,11 @@ import { gql } from "apollo-server-express";
 export const schema = gql`
   scalar DateTime
   scalar Time
+  
+  type TrackRespone {
+    id: ID!
+    ip: String!
+  }
 
   type Inquiry {
     time: DateTime!
@@ -15,12 +20,13 @@ export const schema = gql`
     fileUrl: String!
     inquiries: [Inquiry!]!
   }
-
+  
   type Mutation {
     createTracker(file: Upload): Tracker!
   }
-
+  
   type Query {
     listTrackers(ids: [ID!]): [Tracker!]!
+    track(id: ID!): TrackRespone!
   }
 `;

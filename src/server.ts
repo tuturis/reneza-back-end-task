@@ -51,7 +51,7 @@ export const startApp = async () => {
   });
 
   server.applyMiddleware({ app, path: "/graphql" });
-
+  app.set('trust proxy', true)
   app.listen(process.env.PORT, () => {
     console.log(`Server listening on port ${process.env.PORT}`);
   });
