@@ -14,7 +14,8 @@
     "start": "tsc && node dist/index.js",
     "server": "ts-node src/server.ts",
     "tsc": "tsc",
-    "tscCheck": "tsc --noEmit"
+    "tscCheck": "tsc --noEmit",
+    "test": "ts-node src/test/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -44,6 +45,8 @@
   "dependencies": {
     "@typegoose/typegoose": "^7.4.2",
     "apollo-server-express": "^2.19.0",
+    "form-data": "^3.0.0",
+    "axios": "^0.21.0",
     "dataloader": "^2.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
