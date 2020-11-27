@@ -17,7 +17,8 @@ export const trackerResolvers = {
     args: unknown,
     { trackerLoader }: Context
   ) => {
-    return encodeURI(`${process.env.API_URL || "localhost" + ":" + process.env.PORT}/graphql/?query={track{id}}?variables={id:${id}}`);
+    let uri = encodeURIComponent(`/graphql/?query={track{id}}?variables={id:${id}}`)
+    return `${process.env.API_URL || "localhost" + ":" + process.env.PORT}${uri}`;
   },
   inquiries: async (
     { id }: TrackerResolverParent,
