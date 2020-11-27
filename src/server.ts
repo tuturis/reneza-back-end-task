@@ -24,6 +24,9 @@ query ($ids:[ID!]!) {
 
 export const startApp = async () => {
   const app = express();
+  app.use(express.json())
+  app.use(express.urlencoded({ extended: true }))
+  app.set('trust proxy', true)
 
   await fakeStorage.init();
   if (!process.env.MONGO_URL) {
@@ -51,7 +54,6 @@ export const startApp = async () => {
   });
 
   server.applyMiddleware({ app, path: "/graphql" });
-  app.set('trust proxy', true)
   app.listen(process.env.PORT, () => {
     console.log(`Server listening on port ${process.env.PORT}`);
   });
