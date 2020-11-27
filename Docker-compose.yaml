@@ -1,0 +1,24 @@
+version: "3"
+services:
+  satoshi2-back:
+    image: node:10
+    volumes:
+      - .:/home/node/app
+    working_dir: /home/node/app
+    command: >
+      sh -c "npm install && npm run start"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    environment:
+      MONGO_URL: "mongodb://mongo:27017/"
+      PORT: 3000
+
+  mongo:
+    image: mongo:latest
+    command: mongod
+    ports:
+      - "27017:27017"
